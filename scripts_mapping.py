@@ -41,11 +41,11 @@ from operator import itemgetter
 from collections import OrderedDict
 
 b = [0,3,4,5,6,9]
-f = open('studentInfo4.csv','wb')
+f = open('../studentInfo4.csv','wb')
 f.write(','.join(['FAT','Gender', 'ID', 'Entry_Major', 'Math_SAT', 'Verbal_SAT', 'SAT', \
          'GPA', 'Transfer_or_not', 'Graduated_or_not', 'GradMj_Reported',\
          'GradMj_Extracted', 'EndMj', 'Unique_Majors', 'Semesters_Enrolled', 'All_majors\n']))
-for linenum,x in enumerate(open('CSTmia10.csv','rb').readlines()):
+for linenum,x in enumerate(open('../CSTmia10.csv','rb').readlines()):
     if linenum == 0:
 #         header = x.split(',')
         continue
@@ -78,11 +78,12 @@ for linenum,x in enumerate(open('CSTmia10.csv','rb').readlines()):
     if 'TRANSFER' in x:
         transfer = 1
     
-#     graduate = 0
+    graduate = 0
     if 'GRADUATE' in x:
         graduate = 1
+
     # header = list(itemgetter(*b)(header)).append([',','TRANSFER', 'Majors'])
-    if len(majors) == 0 or not graduate:
+    if (len(majors) == 0) or (not graduate):
         gradmajor = ''
     else:
         gradmajor = majors[-1]
